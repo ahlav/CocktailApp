@@ -32,7 +32,7 @@ export default function Login({setToken}: any) {
         <Card className="login-card" variant="outlined">
             <div className="login-wrapper">
                 <h2>Welcome to Cocktail app</h2>
-                <form onSubmit={handleSubmit}>
+                <form data-testid="login-form" onSubmit={handleSubmit}>
                     <div className="form-wrapper">
                         {!message && (
                             <Alert severity="info">Please use credentials <b>admin</b> and <b>admin</b> to sign
@@ -40,11 +40,14 @@ export default function Login({setToken}: any) {
                         {!!message && (
                             <Alert severity="error">{message}</Alert>)}
                         <TextField required id="username" label="Username" variant="outlined" type="text"
+                                   data-testid="login-username"
                                    onChange={e => setUserName(e.target.value)}/>
                         <TextField required id="password" label="Password" variant="outlined" type="password"
+                                   data-testid="login-password"
                                    onChange={e => setPassword(e.target.value)}/>
                         <div style={{marginTop: "20px"}}>
-                            <Button variant="contained" type="submit">Submit</Button>
+                            <Button disabled={!username || !password} variant="contained" type="submit"
+                                    data-testid="login-submit">Submit</Button>
                         </div>
                     </div>
                 </form>

@@ -28,7 +28,8 @@ export default function CocktailList({type}: { type: string }) {
     return (
         <div className="cocktail-list">
             {jsonCocktails.map((drink: Cocktail) => (
-                <CocktailCard key={drink.strDrink} name={drink.strDrink} imgUrl={drink.strDrinkThumb} type={type}
+                <CocktailCard key={drink.strDrink} name={drink.strDrink}
+                              imgUrl={drink.strDrinkThumb} type={type}
                               drinkId={drink.idDrink}/>
             ))}
         </div>

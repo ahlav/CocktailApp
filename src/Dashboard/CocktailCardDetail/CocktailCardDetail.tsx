@@ -35,20 +35,20 @@ export default function CocktailCardDetail({drinkId}: { drinkId: string }) {
         <div className="cocktail-detail-list">
             {jsonDetails.map((drink: CocktailDetails) => (
                 <div key={drinkId}>
-                    <div className="row">
+                    <div className="row" data-testid={"label-alcoholic-" + drinkId}>
                         <label className="drink-label">Alcoholic: </label>{drink.strAlcoholic}
                     </div>
-                    <div className="row">
+                    <div className="row" data-testid={"label-category-" + drinkId}>
                         <label className="drink-label">Category: </label>{drink.strCategory}
                     </div>
-                    <div className="row">
+                    <div className="row" data-testid={"label-glass-" + drinkId}>
                         <label className="drink-label">Glass: </label>{drink.strGlass}
                     </div>
-                    <div className="row">
+                    <div className="row" data-testid={"label-ingredients-" + drinkId}>
                         <label className="drink-label">Ingredients: </label>
                         {getIngredientsList(drink)}
                     </div>
-                    <div className="row">
+                    <div className="row" data-testid={"label-instructions-" + drinkId}>
                         <label className="drink-label">Instructions: </label><br/>{drink.strInstructions}
                     </div>
                 </div>

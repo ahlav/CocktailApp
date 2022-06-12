@@ -30,7 +30,7 @@ export default function CocktailCard({name, imgUrl, type, drinkId}: { name: stri
     };
 
     return (
-        <div className="cocktail-card">
+        <div className="cocktail-card" data-testid={"cocktail-card-" + drinkId}>
             <Card sx={{width: 300}}>
                 <CardHeader
                     avatar={
@@ -51,6 +51,7 @@ export default function CocktailCard({name, imgUrl, type, drinkId}: { name: stri
                 </CardContent>
                 <CardActions disableSpacing>
                     <ExpandMore
+                        data-testid={"expand-button-" + drinkId}
                         expand={expanded}
                         onClick={handleExpandClick}
                         aria-expanded={expanded}

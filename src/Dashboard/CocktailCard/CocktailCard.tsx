@@ -56,6 +56,7 @@ export default function CocktailCard({name, imgUrl, type, drinkId}: { name: stri
                         onClick={handleExpandClick}
                         aria-expanded={expanded}
                         aria-label="show more"
+                        id={"expand-btn-" + drinkId}
                     >
                         <ExpandMoreIcon/>
                     </ExpandMore>

@@ -41,7 +41,8 @@ export default function Dashboard() {
                 <Box sx={{overflow: 'auto'}}>
                     <List>
                         {CocktailTypes.map((drink, index) => (
-                            <ListItem key={drink.name} button onClick={() => setComponent(drink.name)} disablePadding>
+                            <ListItem key={drink.name} id={drink.name} button onClick={() => setComponent(drink.name)}
+                                      disablePadding>
                                 <ListItemButton>
                                     <ListItemIcon>
                                         {index % 2 === 0 ? <ListItemIcon/> : <ListItemIcon/>}

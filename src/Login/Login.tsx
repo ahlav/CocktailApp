@@ -38,7 +38,7 @@ export default function Login({setToken}: any) {
                             <Alert severity="info">Please use credentials <b>admin</b> and <b>admin</b> to sign
                                 in.</Alert>)}
                         {!!message && (
-                            <Alert severity="error">{message}</Alert>)}
+                            <Alert id="alert-error" severity="error">{message}</Alert>)}
                         <TextField required id="username" label="Username" variant="outlined" type="text"
                                    data-testid="login-username"
                                    onChange={e => setUserName(e.target.value)}/>
@@ -47,7 +47,7 @@ export default function Login({setToken}: any) {
                                    onChange={e => setPassword(e.target.value)}/>
                         <div style={{marginTop: "20px"}}>
                             <Button disabled={!username || !password} variant="contained" type="submit"
-                                    data-testid="login-submit">Submit</Button>
+                                    data-testid="login-submit" id="btn-submit">Submit</Button>
                         </div>
                     </div>
                 </form>

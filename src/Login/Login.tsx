@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './Login.css';
 import {Alert, Button, Card, TextField} from "@mui/material";
 
-async function loginUser(credentials: Object, setMessage: Function) {
+async function getUserToken(credentials: Object, setMessage: Function) {
     return fetch('http://localhost:8080/login', {
         method: 'POST',
         headers: {
@@ -22,7 +22,7 @@ export default function Login({setToken}: any) {
 
     const handleSubmit = async (e: SyntheticEvent) => {
         e.preventDefault();
-        const token = await loginUser({
+        const token = await getUserToken({
             username, password
         }, setMessage);
         setToken(token);
@@ -31,7 +31,7 @@ export default function Login({setToken}: any) {
     return (
         <Card className="login-card" variant="outlined">
             <div className="login-wrapper">
-                <h2>Welcome to Cocktail app</h2>
+                <h2>Welcome to the Cocktail app</h2>
                 <form data-testid="login-form" onSubmit={handleSubmit}>
                     <div className="form-wrapper">
                         {!message && (
@@ -45,7 +45,7 @@ export default function Login({setToken}: any) {
                         <TextField required id="password" label="Password" variant="outlined" type="password"
                                    data-testid="login-password"
                                    onChange={e => setPassword(e.target.value)}/>
-                        <div style={{marginTop: "20px"}}>
+                        <div className="submit-btn-wrapper">
                             <Button disabled={!username || !password} variant="contained" type="submit"
                                     data-testid="login-submit" id="btn-submit">Submit</Button>
                         </div>

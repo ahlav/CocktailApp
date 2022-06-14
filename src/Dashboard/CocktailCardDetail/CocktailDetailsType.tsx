@@ -1,4 +1,4 @@
-export default interface CocktailDetails {
+export default interface CocktailDetailsType {
     strTags: string,
     strCategory: string,
     strInstructions: string,

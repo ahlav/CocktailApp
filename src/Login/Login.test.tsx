@@ -1,6 +1,6 @@
 import React from "react";
 
-import {fireEvent, render, screen} from "@testing-library/react";
+import {render, screen} from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
 import Login from "./Login";
 
@@ -37,17 +37,17 @@ describe("Login", () => {
 
     test("should allow entering a username", async () => {
         const usernameField = screen.getByTestId('login-username').querySelector('input');
-        fireEvent.change(usernameField as Element, {target: {value: 'Franta'}});
+        await userEvent.type(usernameField as Element, 'Franta');
         expect(usernameField?.value).toBe('Franta');
     });
 
     test("should allow entering a password", async () => {
         const passwordField = screen.getByTestId('login-password').querySelector('input');
-        fireEvent.change(passwordField as Element, {target: {value: 'secret'}});
+        await userEvent.type(passwordField as Element, 'secret');
         expect(passwordField?.value).toBe('secret');
     });
 
-    test("should submit the form with username and password", async () => {
+    test("should submit the form with username and password and send request", async () => {
         const usernameField = screen.getByTestId('login-username').querySelector('input');
         const passwordField = screen.getByTestId('login-password').querySelector('input');
 
@@ -58,7 +58,7 @@ describe("Login", () => {
         expect(fetch).toHaveBeenCalledTimes(1);
     });
 
-    test("should not submit the form with username and no password", async () => {
+    test("should not submit the form with username and no password and not send request", async () => {
         const usernameField = screen.getByTestId('login-username').querySelector('input');
         const submitButton = screen.getByTestId('login-submit');
 

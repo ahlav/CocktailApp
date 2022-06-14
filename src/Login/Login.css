@@ -17,3 +17,7 @@
     align-items: center;
     gap: 20px;
 }
+
+.submit-btn-wrapper {
+    margin-top: 20px;
+}

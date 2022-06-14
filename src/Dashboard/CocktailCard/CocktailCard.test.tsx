@@ -33,5 +33,4 @@ describe("CocktailCard", () => {
         expect(fetch).toHaveBeenCalledTimes(1);
     });
 
-
 });

@@ -1,7 +1,7 @@
 import puppeteer, {Browser, ElementHandle, Page} from "puppeteer";
 
 export class e2eBase {
-    baseUrl: string;
+    url: string;
     browser: Browser | undefined;
     page: Page | undefined;
 
@@ -9,7 +9,7 @@ export class e2eBase {
         jest.setTimeout(30000);
         this.browser = undefined;
         this.page = undefined;
-        this.baseUrl = "http://localhost:3000";
+        this.url = "http://localhost:3000";
     }
 
     async openBrowser() {
@@ -23,7 +23,7 @@ export class e2eBase {
     }
 
     async goToHomePage() {
-        await this.page?.goto(this.baseUrl);
+        await this.page?.goto(this.url);
     }
 
     async closeBrowser() {
@@ -79,12 +79,12 @@ export class e2eBase {
         let text;
         const elementsWithText = await this.page?.$x(`//span[text()="${name}"]`);
         if (elementsWithText && elementsWithText.length > 0) {
-            text = await this.getProperty(elementsWithText[0], 'textContent');
+            text = await e2eBase.getProperty(elementsWithText[0], 'textContent');
         }
         expect(text).toEqual(name);
     }
 
-    async getProperty(element: ElementHandle, property: string): Promise<string> {
+    private static async getProperty(element: ElementHandle, property: string): Promise<string> {
         return await (await element.getProperty(property)).jsonValue();
     }
 

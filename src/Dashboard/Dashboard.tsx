@@ -13,11 +13,12 @@ import ListItemText from '@mui/material/ListItemText';
 import {useState} from "react";
 import CocktailTypes from "./CocktailList/CocktailTypes";
 import CocktailList from "./CocktailList/CocktailList";
+import CocktailType from "./CocktailList/CocktailType";
 
 const drawerWidth = 240;
 
 export default function Dashboard() {
-    const [component, setComponent] = useState('Shake');
+    const [cocktailType, setCocktailType] = useState<CocktailType>(CocktailTypes[2]);
 
     return (
         <Box sx={{display: 'flex'}}>
@@ -40,14 +41,15 @@ export default function Dashboard() {
                 <Toolbar/>
                 <Box sx={{overflow: 'auto'}}>
                     <List>
-                        {CocktailTypes.map((drink, index) => (
-                            <ListItem key={drink.name} id={drink.name} button onClick={() => setComponent(drink.name)}
+                        {CocktailTypes.map((cocktail, index) => (
+                            <ListItem key={cocktail.name} id={cocktail.name} button
+                                      onClick={() => setCocktailType(cocktail)}
                                       disablePadding>
                                 <ListItemButton>
                                     <ListItemIcon>
                                         {index % 2 === 0 ? <ListItemIcon/> : <ListItemIcon/>}
                                     </ListItemIcon>
-                                    <ListItemText primary={drink.name}/>
+                                    <ListItemText primary={cocktail.name}/>
                                 </ListItemButton>
                             </ListItem>
                         ))}
@@ -56,7 +58,7 @@ export default function Dashboard() {
             </Drawer>
             <Box component="main" sx={{flexGrow: 1, p: 3}}>
                 <Toolbar/>
-                <CocktailList type={component}/>
+                <CocktailList type={cocktailType.name}/>
             </Box>
         </Box>
     );

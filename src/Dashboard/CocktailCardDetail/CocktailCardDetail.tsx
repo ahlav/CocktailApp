@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './CocktailCardDetail.css';
-import CocktailDetails from "./CocktailDetails";
+import CocktailDetailsType from "./CocktailDetailsType";
 
 const getCocktailDetails = async (id: string, setJsonDetails: Function) => {
     const url = (
@@ -12,7 +12,7 @@ const getCocktailDetails = async (id: string, setJsonDetails: Function) => {
     setJsonDetails(jsonData.drinks);
 };
 
-function getIngredientsList(drink: CocktailDetails) {
+function getIngredientsList(drink: CocktailDetailsType) {
     let arr = [];
     for (const [key, value] of Object.entries(drink)) {
         if (key.startsWith("strIngredient")) {
@@ -25,15 +25,15 @@ function getIngredientsList(drink: CocktailDetails) {
 }
 
 export default function CocktailCardDetail({drinkId}: { drinkId: string }) {
-    const [jsonDetails, setJsonDetails] = useState([]);
+    const [jsonDetails, setJsonDetails] = useState<CocktailDetailsType[]>([]);
 
     useEffect(() => {
         getCocktailDetails(drinkId, setJsonDetails);
     }, [drinkId]);
 
     return (
-        <div className="cocktail-detail-list">
-            {jsonDetails.map((drink: CocktailDetails) => (
+        <div>
+            {jsonDetails.map((drink: CocktailDetailsType) => (
                 <div key={drinkId}>
                     <div className="row" data-testid={"label-alcoholic-" + drinkId}>
                         <label className="drink-label">Alcoholic: </label><span>{drink.strAlcoholic}</span>
@@ -46,7 +46,7 @@ export default function CocktailCardDetail({drinkId}: { drinkId: string }) {
                     </div>
                     <div className="row" data-testid={"label-ingredients-" + drinkId}>
                         <label className="drink-label">Ingredients: </label>
-                        <span>  {getIngredientsList(drink)}</span>
+                        <span>{getIngredientsList(drink)}</span>
                     </div>
                     <div className="row" data-testid={"label-instructions-" + drinkId}>
                         <label className="drink-label">Instructions: </label><br/><span>{drink.strInstructions}</span>

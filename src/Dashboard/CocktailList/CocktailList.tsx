@@ -19,7 +19,7 @@ const getCocktailsByType = async (type: string, setJsonCocktails: Function) => {
 };
 
 export default function CocktailList({type}: { type: string }) {
-    const [jsonCocktails, setJsonCocktails] = useState([]);
+    const [jsonCocktails, setJsonCocktails] = useState<Cocktail[]>([]);
 
     useEffect(() => {
         getCocktailsByType(type, setJsonCocktails);

@@ -1,10 +1,12 @@
-const CocktailTypes = [
-    {name: "Ordinary Drink", url: "Ordinary_Drink"},
-    {name: "Cocktail", url: "Cocktail"},
-    {name: "Shake", url: "Shake"},
-    {name: "Cocoa", url: "Cocoa"},
-    {name: "Shot", url: "Shot"},
-    {name: "Beer", url: "Beer"},
+import CocktailType from "./CocktailType";
+
+const CocktailTypes: CocktailType[] = [
+    {name: "Ordinary Drink"},
+    {name: "Cocktail"},
+    {name: "Shake"},
+    {name: "Cocoa"},
+    {name: "Shot"},
+    {name: "Beer"},
 ];
 
 export default CocktailTypes;

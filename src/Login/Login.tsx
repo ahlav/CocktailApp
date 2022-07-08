@@ -15,7 +15,7 @@ async function getUserToken(credentials: Object, setMessage: Function) {
         .catch(() => setMessage("Wrong credentials"))
 }
 
-export default function Login({setToken}: any) {
+export default function Login({setToken}: {setToken: Function}) {
     const [username, setUserName] = useState<string>();
     const [password, setPassword] = useState<string>();
     const [message, setMessage] = useState<string>();

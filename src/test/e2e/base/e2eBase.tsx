@@ -89,7 +89,7 @@ export class e2eBase {
     }
 
     async waitUntilPageIsLoaded() {
-        await this.page?.waitForTimeout(1000)
+        await this.page?.waitForTimeout(1000);
     }
 }
 

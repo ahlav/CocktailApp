@@ -13,7 +13,7 @@ function App() {
     }
 
     return (
-        <div className="wrapper">
+        <>
             <BrowserRouter>
                 <Switch>
                     <Route path="/">
@@ -21,7 +21,7 @@ function App() {
                     </Route>
                 </Switch>
             </BrowserRouter>
-        </div>
+        </>
     );
 }
 

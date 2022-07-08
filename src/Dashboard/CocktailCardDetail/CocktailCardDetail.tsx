@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './CocktailCardDetail.css';
 import CocktailDetailsType from "./CocktailDetailsType";
 
-const getCocktailDetails = async (id: string, setJsonDetails: Function) => {
+async function getCocktailDetails(id: string, setJsonDetails: Function) {
     const url = (
         'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?' +
         new URLSearchParams({i: id}).toString()
@@ -10,7 +10,7 @@ const getCocktailDetails = async (id: string, setJsonDetails: Function) => {
     const response = await fetch(url);
     const jsonData = await response?.json();
     setJsonDetails(jsonData.drinks);
-};
+}
 
 function getIngredientsList(drink: CocktailDetailsType) {
     let arr = [];
@@ -32,7 +32,7 @@ export default function CocktailCardDetail({drinkId}: { drinkId: string }) {
     }, [drinkId]);
 
     return (
-        <div>
+        <>
             {jsonDetails.map((drink: CocktailDetailsType) => (
                 <div key={drinkId}>
                     <div className="row" data-testid={"label-alcoholic-" + drinkId}>
@@ -53,7 +53,7 @@ export default function CocktailCardDetail({drinkId}: { drinkId: string }) {
                     </div>
                 </div>
             ))}
-        </div>
+        </>
     )
 }
 

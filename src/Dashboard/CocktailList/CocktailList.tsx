@@ -8,7 +8,7 @@ interface Cocktail {
     strDrinkThumb: string
 }
 
-const getCocktailsByType = async (type: string, setJsonCocktails: Function) => {
+async function getCocktailsByType(type: string, setJsonCocktails: Function) {
     const url = (
         'https://www.thecocktaildb.com/api/json/v1/1/filter.php?' +
         new URLSearchParams({c: type}).toString()
@@ -16,7 +16,7 @@ const getCocktailsByType = async (type: string, setJsonCocktails: Function) => {
     const response = await fetch(url);
     const jsonData = await response?.json();
     setJsonCocktails(jsonData.drinks);
-};
+}
 
 export default function CocktailList({type}: { type: string }) {
     const [jsonCocktails, setJsonCocktails] = useState<Cocktail[]>([]);

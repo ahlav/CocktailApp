@@ -16,7 +16,7 @@ function useMockToken(): Function {
 
 function renderLoginForm() {
     const token = useMockToken();
-    return render(<Login setToken={token as any}/>);
+    return render(<Login setToken={token as Function}/>);
 }
 
 beforeEach(() => {
